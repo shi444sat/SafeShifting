@@ -4996,10 +4996,12 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 .page_banner {
     overflow: hidden;
     position: relative;
-    background: linear-gradient(rgb(0 0 0 / 73%), rgb(0 0 0 / 61%)), url(../deluxe-back.html) center / cover;
+    background: linear-gradient(rgb(0 0 0 / 73%), rgb(0 0 0 / 61%)), url(../images/about/About-section-image.png) center / cover;
   
     margin-top: 50px;
     padding: 260px 0 150px;
+  
+
 }
 
 
