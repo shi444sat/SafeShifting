@@ -38,11 +38,11 @@
 
   // OffCanvas - Start
   // --------------------------------------------------
-  $(".offcanvas__close,.offcanvas__overlay").on("click", function () {
+  $(document).on("click", ".offcanvas__close,.offcanvas__overlay", function () {
     $(".offcanvas__info").removeClass("info-open");
     $(".offcanvas__overlay").removeClass("overlay-open");
   });
-  $(".offcanvas-toggle").on("click", function () {
+  $(document).on("click", ".offcanvas-toggle", function () {
     $(".offcanvas__info").addClass("info-open");
     $(".offcanvas__overlay").addClass("overlay-open");
   });
@@ -86,11 +86,32 @@
 
   // 	Mobile Menu - Start
   // --------------------------------------------------
-	$('#mobile-menu').meanmenu({
-		meanMenuContainer: '.mobile-menu',
-		meanScreenWidth: "991",
-		meanExpand: ['<i class="bi bi-plus-lg"></i>'],
-	});
+  window.initializeDynamicNav = function() {
+    if (typeof $.fn.meanmenu !== 'function') {
+      return;
+    }
+
+    if (!$('#mobile-menu').length || !$('.mobile-menu').length) {
+      return;
+    }
+
+    if ($('.mobile-menu').children('.mean-container').length) {
+      return;
+    }
+
+    $('#mobile-menu').meanmenu({
+      meanMenuContainer: '.mobile-menu',
+      meanScreenWidth: "991",
+      meanExpand: ['<i class="bi bi-plus-lg"></i>'],
+    });
+  };
+
+  window.initializeDynamicNav();
+
+  if (window.__pendingDynamicNavInit) {
+    window.initializeDynamicNav();
+    window.__pendingDynamicNavInit = false;
+  }
   // Mobile Menu - End
   // --------------------------------------------------
 
